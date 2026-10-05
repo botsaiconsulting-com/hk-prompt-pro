@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HK.Supreme.Api", "HK.Supreme.Api\HK.Supreme.Api.csproj", "{C1FF7231-84B2-4F0E-B896-9173CBDE07CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HK.Supreme.Api.Tests", "HK.Supreme.Api.Tests\HK.Supreme.Api.Tests.csproj", "{C9826D71-5FAF-4637-BE9A-6EEC074E8D30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1FF7231-84B2-4F0E-B896-9173CBDE07CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1FF7231-84B2-4F0E-B896-9173CBDE07CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1FF7231-84B2-4F0E-B896-9173CBDE07CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1FF7231-84B2-4F0E-B896-9173CBDE07CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9826D71-5FAF-4637-BE9A-6EEC074E8D30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9826D71-5FAF-4637-BE9A-6EEC074E8D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9826D71-5FAF-4637-BE9A-6EEC074E8D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9826D71-5FAF-4637-BE9A-6EEC074E8D30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,10 @@
+.env
+node_modules/
+dist/
+bin/
+obj/
+*.user
+.vs/
+.vscode/
+.claude/settings.local.json
+TestResults/

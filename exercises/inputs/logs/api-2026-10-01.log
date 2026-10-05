@@ -1,0 +1,19 @@
+2026-10-01 16:01:47.112 +05:30 [INF] Monthly sales for surat from 07/01/2026 to 10/01/2026
+2026-10-01 16:01:47.398 +05:30 [INF] Executed action HK.Supreme.Api.Controllers.OrdersController.GetMonthlySales (HK.Supreme.Api) in 284.6ms
+2026-10-01 16:01:52.006 +05:30 [INF] Monthly sales for india-a from 07/01/2026 to 10/01/2026
+2026-10-01 16:01:52.231 +05:30 [INF] Executed action HK.Supreme.Api.Controllers.OrdersController.GetMonthlySales (HK.Supreme.Api) in 223.9ms
+2026-10-01 16:01:58.540 +05:30 [INF] Monthly sales for india-b from 07/01/2026 to 10/01/2026
+2026-10-01 16:01:58.702 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CustomerCode'.
+Invalid column name 'CustomerCode'.
+Invalid column name 'CustomerCode'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__273_0(Object obj)
+--- End of stack trace from previous location ---
+   at HK.Supreme.Api.Data.OrderRepository.GetMonthlySalesAsync(String company, DateOnly from, DateOnly to, CancellationToken cancellationToken) in src\api\HK.Supreme.Api\Data\OrderRepository.cs:line 40
+   at HK.Supreme.Api.Controllers.OrdersController.GetMonthlySales(String company, DateOnly from, DateOnly to, CancellationToken cancellationToken) in src\api\HK.Supreme.Api\Controllers\OrdersController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+ClientConnectionId:3f6a2c11-0d4e-4b8e-9a51-7c2b9e0d5a10
+Error Number:207,State:1,Class:16
+2026-10-01 16:01:58.705 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5080/api/orders/india-b/monthly-sales?from=2026-07-01&to=2026-10-01 - 500 0 null 164.2ms

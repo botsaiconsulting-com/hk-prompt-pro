@@ -1,0 +1,16 @@
+# Training SQL Server instance for testing on a laptop. Not for production data.
+# Passwords come from .env (copy .env.example). Load the data with:
+#   docker compose exec sql bash /db/load.sh
+services:
+  sql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: hk-training-sql
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:?set MSSQL_SA_PASSWORD in .env}
+      HK_RO_PASSWORD: ${HK_RO_PASSWORD:?set HK_RO_PASSWORD in .env}
+      HK_REPLAY_PASSWORD: ${HK_REPLAY_PASSWORD:-}
+    ports:
+      - "127.0.0.1:14330:1433"
+    volumes:
+      - ./db:/db:ro

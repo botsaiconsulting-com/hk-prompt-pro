@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Order Entry (legacy)</title>
+<style>
+  body { font-family: Arial; font-size: 13px; }
+  table td { padding: 3px 6px; }
+  .tot { font-weight: bold; color: #900; }
+</style>
+</head>
+<body>
+<h3>Order Entry - Client Style Line</h3>
+<table>
+  <tr><td>Style</td><td><input id="style" value="RG-1001"></td></tr>
+  <tr><td>Net metal wt (g)</td><td><input id="wt" value="3.2"></td></tr>
+  <tr><td>Metal rate / g</td><td><input id="rate" value="6200"></td></tr>
+  <tr><td>Making / g</td><td><input id="mk" value="950.75"></td></tr>
+  <tr><td>Stone ct</td><td><input id="ct" value="0.1"></td></tr>
+  <tr><td>Stone rate / ct</td><td><input id="srate" value="52000"></td></tr>
+  <tr><td>Qty</td><td><input id="qty" value="20"></td></tr>
+</table>
+<button id="calc">Calculate</button>
+<div id="out"></div>
+<script type="module" src="./order-entry.js"></script>
+</body>
+</html>

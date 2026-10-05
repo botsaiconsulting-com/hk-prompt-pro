@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "defaultMode": "default",
+    "disableBypassPermissionsMode": "disable",
+    "disableAutoMode": "disable",
+    "ask": [
+      "Bash(sqlcmd *)",
+      "PowerShell(sqlcmd *)",
+      "PowerShell(Invoke-Sqlcmd *)",
+      "Bash(git push *)",
+      "PowerShell(git push *)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Read(appsettings.*.json)",
+      "Read(web.config)",
+      "Edit(/db/company-*/**)",
+      "Edit(/db/security/**)",
+      "Edit(/db/*.sql)",
+      "Edit(/db/load.sh)",
+      "Bash(docker *)",
+      "PowerShell(docker *)",
+      "Bash(git push *--force*)",
+      "Bash(git push -f *)",
+      "Bash(git push * -f)",
+      "Bash(git push * -f *)",
+      "PowerShell(git push *--force*)",
+      "PowerShell(git push -f *)",
+      "PowerShell(git push * -f)",
+      "PowerShell(git push * -f *)"
+    ]
+  }
+}
