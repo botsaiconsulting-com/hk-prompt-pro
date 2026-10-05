@@ -32,12 +32,12 @@ public class PricingServiceTests
     }
 
     [Fact]
-    public void Calculate_TotalEndingInHalfRupee_RoundsUp()
+    public void Calculate_LowMakingCharge_UsesMinimumPerPiece()
     {
-        // subtotal 150; GST 4.50; 154.50 rounds away from zero to 155 (banker's rounding would give 154)
-        var quote = _pricing.Calculate(new QuoteRequest(1m, 150m, 0m, null));
+        // 0.4 g x 950 = 380, below the 500 minimum
+        var quote = _pricing.Calculate(new QuoteRequest(0.4m, 6200m, 950m, null));
 
-        Assert.Equal(155m, quote.Total);
+        Assert.Equal(500m, quote.MakingCharge);
     }
 
     [Fact]

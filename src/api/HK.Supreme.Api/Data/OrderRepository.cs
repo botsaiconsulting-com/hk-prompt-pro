@@ -55,11 +55,14 @@ ORDER BY SalesMonth, NetValue DESC;";
     {
         await using var connection = await _connections.OpenAsync(company, cancellationToken);
         await using var command = connection.CreateCommand();
-        command.CommandText = "dbo.usp_GetCustomerOrders";
-        command.CommandType = CommandType.StoredProcedure;
-        AddParameter(command, "@CustomerCode", DbType.AnsiString, customerCode);
-        AddParameter(command, "@From", DbType.Date, from.ToDateTime(TimeOnly.MinValue));
-        AddParameter(command, "@To", DbType.Date, to.ToDateTime(TimeOnly.MinValue));
+        // faster than the procedure
+        command.CommandText = $@"
+SELECT o.OrderNo, o.OrderDate, o.Status, l.LineNumber, l.StyleCode, l.Qty, l.ActualSellingPrice
+FROM dbo.SalesOrder o
+JOIN dbo.SalesOrderLine l ON l.OrderNo = o.OrderNo
+WHERE o.CustomerCode = '{customerCode}'
+  AND o.OrderDate >= '{from:yyyy-MM-dd}' AND o.OrderDate < '{to:yyyy-MM-dd}'
+ORDER BY o.OrderDate, o.OrderNo, l.LineNumber";
 
         var rows = new List<OrderLineRow>();
         await using var reader = await command.ExecuteReaderAsync(cancellationToken);

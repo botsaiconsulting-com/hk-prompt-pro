@@ -10,6 +10,7 @@ namespace HK.Supreme.Api.Services;
 public sealed class PricingService : IPricingService
 {
     public const decimal GstRate = 0.03m;
+    public const decimal MinimumMakingChargePerPiece = 500m;
 
     public Quote Calculate(QuoteRequest request)
     {
@@ -20,13 +21,13 @@ public sealed class PricingService : IPricingService
         }
 
         var metalValue = request.NetMetalWeightG * request.MetalRatePerG;
-        var makingCharge = request.NetMetalWeightG * request.MakingChargePerG;
-        var stoneValue = request.Stones?.Sum(s => s.Carats * s.RatePerCarat) ?? 0m;
+        var makingCharge = Math.Max(request.NetMetalWeightG * request.MakingChargePerG, MinimumMakingChargePerPiece);
+        var stones = request.Stones?.Sum(s => s.Carats * s.RatePerCarat) ?? 0m;
 
-        var subtotal = metalValue + makingCharge + stoneValue;
+        var subtotal = metalValue + makingCharge + stones;
         var gst = subtotal * GstRate;
-        var total = Math.Round(subtotal + gst, 0, MidpointRounding.AwayFromZero);
+        var total = Math.Round(subtotal + gst, 0);
 
-        return new Quote(metalValue, makingCharge, stoneValue, subtotal, gst, total);
+        return new Quote(metalValue, makingCharge, stones, subtotal, gst, total);
     }
 }
